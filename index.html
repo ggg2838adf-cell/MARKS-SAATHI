@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +20,9 @@
             <div class="content-text">
                 <h1 class="main-title fade-up delay-1">MISSION <span class="highlight-99">99</span></h1>
                 <h2 class="subtitle fade-up delay-2">by MARKS SAATHI</h2>
+                
                 <div class="separator fade-up delay-3"></div>
+
                 <h3 class="tagline fade-up delay-3">J&K’s First Complete Educational App</h3>
                 <p class="description fade-up delay-4">
                     Revolutionizing education in the Valley. Get access to expert Lectures, Notes, Tests, and Quizzes all in one place.
@@ -36,29 +39,44 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator fade-up delay-7">
-            <p>Our Features</p>
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
-    <section class="features-section">
-        <div class="feature-card">
-            <i class="fas fa-video"></i>
-            <h4>Video Lectures</h4>
-            <p>Expert-led sessions for every chapter.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-file-pdf"></i>
-            <h4>PDF Notes</h4>
-            <p>Comprehensive study material for 10th exams.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-edit"></i>
-            <h4>Mock Tests</h4>
-            <p>Real-time testing to aim for 99% marks.</p>
-        </div>
-    </section>
+    <script>
+        // 1. Firecrackers on Page Load (Automatic Celebration)
+        window.onload = function() {
+            var duration = 3 * 1000; // 3 seconds
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                // Create two bursts from left and right corners
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.1, y: 0.6 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.9, y: 0.6 } }));
+            }, 250);
+        };
+
+        // 2. Firecrackers on Tap/Click (Interactive)
+        document.addEventListener('click', function(e) {
+            // Get the position of the click
+            var x = e.clientX / window.innerWidth;
+            var y = e.clientY / window.innerHeight;
+
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: x, y: y },
+                colors: ['#FFD700', '#ff00cc', '#00d2ff'], // Gold, Pink, Blue
+                disableForReducedMotion: true
+            });
+        });
+    </script>
 
 </body>
 </html>
