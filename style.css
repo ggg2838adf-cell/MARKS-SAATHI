@@ -7,23 +7,26 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%; /* Force full height */
+    /* CHANGED: Allow scrolling if content is too tall */
+    overflow-x: hidden; 
+    overflow-y: auto; 
     font-family: 'Poppins', sans-serif;
     background-color: #0f0c29;
     color: white;
-    overflow: hidden; /* LOCK SCROLLING: Essential for single page app feel */
 }
 
 .hero-section {
-    height: 100vh;
+    /* CHANGED: min-height ensures it covers the screen but can grow */
+    min-height: 100vh;
     width: 100%;
     background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #00d2ff, #ff00cc);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     display: flex;
+    flex-direction: column; /* better for mobile stacking */
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px; /* Extra padding to prevent cutting off edges */
     box-sizing: border-box;
 }
 
@@ -38,21 +41,32 @@ body, html {
     text-align: center;
     max-width: 600px;
     width: 100%;
-    /* Ensure glass box is always on top of background but below fireworks */
-    position: relative; 
-    z-index: 10; 
+    position: relative;
+    z-index: 10;
+    margin: 20px 0; /* Adds breathing room on top and bottom */
 }
 
-.main-logo { max-width: 180px; width: 50%; border-radius: 20px; box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); margin-bottom: 15px; }
+.main-logo { 
+    max-width: 180px; 
+    width: 50%; 
+    border-radius: 20px; 
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); 
+    margin-bottom: 15px; 
+}
 
 /* Responsive Text Sizing */
 .main-title { 
-    font-size: 2.5rem; /* Smaller for mobile safety */
-    font-weight: 900; margin: 0; 
+    font-size: 2.5rem; 
+    font-weight: 900; 
+    margin: 0; 
     background: linear-gradient(to right, #fff, #00d2ff); 
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
 }
-@media (min-width: 768px) { .main-title { font-size: 3.5rem; } }
+
+@media (min-width: 768px) { 
+    .main-title { font-size: 3.5rem; } 
+}
 
 .highlight-99 { color: var(--accent-color); -webkit-text-fill-color: var(--accent-color); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
 .separator { height: 4px; width: 60px; background: var(--vibrant-pink); margin: 15px auto; border-radius: 10px; }
@@ -60,10 +74,19 @@ body, html {
 .description { font-size: 0.9rem; color: #ddd; margin-bottom: 25px; line-height: 1.5; }
 
 .entrance-button {
-    display: inline-block; text-decoration: none; padding: 15px 35px; border-radius: 50px;
-    font-weight: 700; color: white; background: linear-gradient(90deg, #ff00cc, #333399, #00d2ff);
-    background-size: 200% auto; transition: 0.5s; text-transform: uppercase;
+    display: inline-block; 
+    text-decoration: none; 
+    padding: 15px 35px; 
+    border-radius: 50px;
+    font-weight: 700; 
+    color: white; 
+    background: linear-gradient(90deg, #ff00cc, #333399, #00d2ff);
+    background-size: 200% auto; 
+    transition: 0.5s; 
+    text-transform: uppercase;
     font-size: 1rem;
+    /* Ensure button doesn't touch the very bottom of the card */
+    margin-bottom: 10px; 
 }
 .entrance-button:hover { background-position: right center; transform: scale(1.05); }
 
