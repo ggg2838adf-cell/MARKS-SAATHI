@@ -1,13 +1,13 @@
 :root {
     --primary-color: #00d2ff;
-    --accent-color: #FFD700;
-    --vibrant-pink: #ff00cc;
+    --gold-color: #FFD700;
+    --royal-purple: #302b63;
 }
 
 body, html {
     margin: 0;
     padding: 0;
-    /* CHANGED: Allow scrolling if content is too tall */
+    /* SCROLL FIX: Allows scrolling if content is tall */
     overflow-x: hidden; 
     overflow-y: auto; 
     font-family: 'Poppins', sans-serif;
@@ -16,81 +16,112 @@ body, html {
 }
 
 .hero-section {
-    /* CHANGED: min-height ensures it covers the screen but can grow */
+    /* SCROLL FIX: min-height ensures it fits screen but grows if needed */
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #00d2ff, #ff00cc);
+    background: linear-gradient(-45deg, #0f0c29, #200122, #302b63, #00d2ff);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     display: flex;
-    flex-direction: column; /* better for mobile stacking */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; /* Extra padding to prevent cutting off edges */
+    padding: 40px 20px;
     box-sizing: border-box;
 }
 
 @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
 .glass-container {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem 1.5rem;
     text-align: center;
     max-width: 600px;
     width: 100%;
     position: relative;
     z-index: 10;
-    margin: 20px 0; /* Adds breathing room on top and bottom */
+    margin: 20px 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* --- Premium Elements --- */
+
+.milestone-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #FFD700, #FDB931);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+.presenter-text {
+    font-family: 'Cinzel', serif; /* Elegant font for School Name */
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
 .main-logo { 
-    max-width: 180px; 
-    width: 50%; 
+    max-width: 160px; 
+    width: 45%; 
     border-radius: 20px; 
-    box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); 
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); 
     margin-bottom: 15px; 
 }
 
-/* Responsive Text Sizing */
 .main-title { 
-    font-size: 2.5rem; 
+    font-size: 3rem; 
     font-weight: 900; 
     margin: 0; 
-    background: linear-gradient(to right, #fff, #00d2ff); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+    line-height: 1.1;
+    color: white;
+    text-transform: uppercase;
+}
+@media (max-width: 480px) { .main-title { font-size: 2.2rem; } }
+
+.highlight-gold {
+    color: var(--gold-color);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
-@media (min-width: 768px) { 
-    .main-title { font-size: 3.5rem; } 
-}
+.separator { height: 3px; width: 80px; background: var(--gold-color); margin: 15px auto; border-radius: 10px; }
 
-.highlight-99 { color: var(--accent-color); -webkit-text-fill-color: var(--accent-color); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-.separator { height: 4px; width: 60px; background: var(--vibrant-pink); margin: 15px auto; border-radius: 10px; }
-.tagline { font-size: 1.2rem; margin-bottom: 10px; }
-.description { font-size: 0.9rem; color: #ddd; margin-bottom: 25px; line-height: 1.5; }
+.tagline { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; }
+
+.description { font-size: 0.95rem; color: #ddd; margin-bottom: 25px; line-height: 1.6; font-weight: 300; }
 
 .entrance-button {
     display: inline-block; 
     text-decoration: none; 
-    padding: 15px 35px; 
+    padding: 18px 40px; 
     border-radius: 50px;
     font-weight: 700; 
-    color: white; 
-    background: linear-gradient(90deg, #ff00cc, #333399, #00d2ff);
+    color: #000; /* Dark text on gold button for contrast */
+    background: linear-gradient(90deg, #FDB931, #FFD700, #FDB931);
     background-size: 200% auto; 
     transition: 0.5s; 
     text-transform: uppercase;
     font-size: 1rem;
-    /* Ensure button doesn't touch the very bottom of the card */
-    margin-bottom: 10px; 
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    margin-bottom: 10px;
 }
-.entrance-button:hover { background-position: right center; transform: scale(1.05); }
+.entrance-button:hover { background-position: right center; transform: scale(1.05); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6); }
 
-.pulsing-text { font-weight: 800; color: var(--accent-color); animation: pulse 2s infinite; display: block; margin-bottom: 15px; }
+.pulsing-text { font-weight: 800; color: #00d2ff; animation: pulse 2s infinite; display: block; margin-bottom: 15px; letter-spacing: 1px; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
 /* Animations */
