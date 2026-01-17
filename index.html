@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission 99 | Marks Saathi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Marks Saathi | Habras International School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -13,28 +13,34 @@
 
     <div class="hero-section">
         <div class="glass-container">
-            <div class="logo-wrapper fade-up">
-                <img src="https://i.postimg.cc/Ghf1F92r/Screenshot-2026-01-15-22-43-11-29-92460851df6f172a4592fca41cc2d2e6.jpg" alt="Mission 99 Logo" class="main-logo">
+            
+            <div class="milestone-badge fade-up">
+                <i class="fas fa-unlock-alt"></i> HISTORIC MILESTONE UNLOCKED
+            </div>
+
+            <p class="presenter-text fade-up delay-1">HABRAS INTERNATIONAL SCHOOL PRESENTS</p>
+
+            <div class="logo-wrapper fade-up delay-2">
+                <img src="https://i.postimg.cc/Ghf1F92r/Screenshot-2026-01-15-22-43-11-29-92460851df6f172a4592fca41cc2d2e6.jpg" alt="Marks Saathi Logo" class="main-logo">
             </div>
 
             <div class="content-text">
-                <h1 class="main-title fade-up delay-1">MISSION <span class="highlight-99">99</span></h1>
-                <h2 class="subtitle fade-up delay-2">by MARKS SAATHI</h2>
+                <h1 class="main-title fade-up delay-3">MARKS <span class="highlight-gold">SAATHI</span></h1>
                 
-                <div class="separator fade-up delay-3"></div>
+                <div class="separator fade-up delay-4"></div>
 
-                <h3 class="tagline fade-up delay-3">J&K’s First Complete Educational App</h3>
-                <p class="description fade-up delay-4">
-                    Revolutionizing education in the Valley. Get access to expert Lectures, Notes, Tests, and Quizzes all in one place.
+                <h3 class="tagline fade-up delay-4">J&K’s First Complete Educational App</h3>
+                <p class="description fade-up delay-5">
+                    We are rewriting history. For the first time in the Valley, <strong>Habras International School</strong> brings you a complete digital ecosystem. Video lectures, notes, and professional testing—now in your pocket.
                 </p>
 
-                <div class="status-box fade-up delay-5">
+                <div class="status-box fade-up delay-6">
                     <span class="pulsing-text">LIVE ON PLAY STORE</span>
                 </div>
 
                 <div class="button-container fade-up delay-6">
                     <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="entrance-button" target="_blank">
-                        <i class="fab fa-google-play"></i> DOWNLOAD NOW
+                        <i class="fab fa-google-play"></i> DOWNLOAD APP
                     </a>
                 </div>
             </div>
@@ -42,37 +48,28 @@
     </div>
 
     <script>
-        // 1. Firecrackers on Page Load (Automatic Celebration)
+        // 1. Firecrackers on Page Load
         window.onload = function() {
-            var duration = 3 * 1000; // 3 seconds
+            var duration = 3 * 1000;
             var animationEnd = Date.now() + duration;
             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
 
             var interval = setInterval(function() {
                 var timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
+                if (timeLeft <= 0) return clearInterval(interval);
                 var particleCount = 50 * (timeLeft / duration);
-                // Create two bursts from left and right corners
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.1, y: 0.6 } }));
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.9, y: 0.6 } }));
             }, 250);
         };
 
-        // 2. Firecrackers on Tap/Click (Interactive)
+        // 2. Firecrackers on Tap
         document.addEventListener('click', function(e) {
-            // Get the position of the click
             var x = e.clientX / window.innerWidth;
             var y = e.clientY / window.innerHeight;
-
             confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: x, y: y },
-                colors: ['#FFD700', '#ff00cc', '#00d2ff'], // Gold, Pink, Blue
+                particleCount: 100, spread: 70, origin: { x: x, y: y },
+                colors: ['#FFD700', '#ffffff', '#00d2ff'],
                 disableForReducedMotion: true
             });
         });
